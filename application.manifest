@@ -1,0 +1,22 @@
+CACHE MANIFEST
+# Example manifest file
+# Version 1.7
+# Andrew Stalker 2014
+
+# file references are from site root
+# change these to the relative path from your site root
+
+# Explicitly cached
+/localstorage/style.css
+/localstorage/applicationcache.js
+
+
+NETWORK:
+# Files here must be online to be used
+
+
+FALLBACK:
+# Files here are loaded when an online resource is required but the client is offline
+
+CACHE:
+# Additional resources to cache

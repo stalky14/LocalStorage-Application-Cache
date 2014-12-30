@@ -1,1 +1,2 @@
 // LocalStorage JavaScript functionality
+

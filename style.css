@@ -2,6 +2,19 @@ body {
     display: block;
     margin: 0px;
     font-family: verdana;
+    background-color: #cccccc;
+}
+
+button {
+    padding: 10px;
+    background-color: #008CBA;
+    color: #ffffff;
+    box-shadow: none;
+    border: 0px;
+}
+
+button:hover {
+    background-color: #0099BB;
 }
 
 .topbar {
@@ -11,8 +24,30 @@ body {
     text-align: center;
 }
 
-.topbar>h1 {
+.title {
     margin: 0px;
-    font-size: 24px;
+    font-size: 20px;
     font-weight: 100;
+    line-height: 40px;
+}
+
+.content {
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.output {
+    border: 1px solid #666666;
+    width: 400px;
+    height: 150px;
+    overflow-y: scroll;
+}
+
+.hint-panel {
+    background-color: #dddddd;
+    padding: 15px;
+    border: 1px solid #333333;
+    box-shadow: 1px 1px 10px #333333;
+;
 }

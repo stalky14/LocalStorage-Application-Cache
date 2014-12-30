@@ -1,5 +1,5 @@
 <!doctype html>
-        <html>
+        <html manifest="applicationz.manifest">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -11,10 +11,65 @@
 </head>
 <body>
     <div class="topbar">
-        <h1>LocalStorage and application cache demo</h1>
+        <h1 class="title">LocalStorage and application cache demo</h1>
     </div>
     <div class="content">
+        <div class="appcache-status">
+            <h1>Application Cache</h1>
+            <p id="appcache-status"></p>
+            <div class="output" id="appcache-output">
 
+            </div>
+            <br>
+            <button id="appcache-update" onclick="updateAppcache()">Check for Updates</button>
+
+        <h2>How it works</h2>
+            <p><span>The manifest file is made up of several sections which lists all the resources on the web application. Once thses files are referenced in the manifest file then they will be cached by the browser, and any changes made to those files will not be seen until the manifest file is also updated.</span>
+                <span>Each time the web page loads the application cache is checked for changes. if there are any then the changed files are downloaded to the browsers cache.</span>
+                <span>Downloading these changes doesn't mean they are immediately displayed though. To show changes the page must be refreshed.</span>
+            </p>
+            <p>Pressing the 'Check for Updates' button above will manually force the browser to check for any updates. </p>
+            <div class="hint-panel">
+                <p>
+                    <span>If the mime-type is not in your servers configuration then the application cache may not work.</span>
+                    <span>Any file extension can be used, however needs to be served with the correct mime-type.</span>
+                    <span>Common file extensions that I've found are .maifest and .appcache. Out of the box XAMPP installations should support .manifest.</span>
+                </p>
+            </div>
+            <p>
+                <span>When the browser is offline, or the website goes down, the application cache status will change to error when attempting to update. Any cached pages and scripts will continue to function.</span>
+                <span>When the browser is online, and there are no updates found in the application cache, then all resources are loaded from the cache, saving network bandwidth and time.</span>
+            </p>
+        </div>
+        <div class="localstorage">
+            <h1>LocalStorage</h1>
+            <div class="localstorage-counter">
+                <h2>Saving numbers</h2>
+                <button id="counter-button" value="Increase Number" onclick="">Increase Number</button>
+                <p id="counter">0</p>
+                <button id="counter-reset" value="counter reset" onclick="">Reset Counter</button>
+            </div>
+            <div class="localstorage-text">
+                <h2>Saving text</h2>
+                <input type="text" id="text-input" />
+                <button id="text-save" value="save text" onclick="">Save Text</button>
+                <div class="text-scroll">
+                    <ul id="text-list">
+
+                    </ul>
+                </div>
+            </div>
+            <div class="localstorage-messages">
+                <h2>Using JSON to save objects</h2>
+                <label for="message">Message:</label>
+                <input type="text" id="message" />
+                <button id="message-save" value="save message" onclick="">Save Message</button>
+
+                <div class="output" id="json-output">
+
+                </div>
+            </div>
+        </div>
     </div>
 </body>
         </html>
