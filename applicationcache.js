@@ -1,0 +1,1 @@
+// Application Cache JavaScript functionality

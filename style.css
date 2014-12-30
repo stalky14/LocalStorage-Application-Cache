@@ -1,0 +1,18 @@
+body {
+    display: block;
+    margin: 0px;
+    font-family: verdana;
+}
+
+.topbar {
+    height: 40px;
+    background-color: #333333;
+    color: #ffffff;
+    text-align: center;
+}
+
+.topbar>h1 {
+    margin: 0px;
+    font-size: 24px;
+    font-weight: 100;
+}
