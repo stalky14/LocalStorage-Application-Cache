@@ -1,17 +1,17 @@
 <!doctype html>
-        <html manifest="applicationz.manifest">
+        <html manifest="application.manifest">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>LocalStorage and Application Cache Demo</title>
+    <title>Local Storage and Application Cache Demo</title>
     <link rel="stylesheet" href="style.css" />
     <script src="localstorage.js"></script> <!-- LocalStorage JavaScript -->
     <script src="applicationcache.js"></script> <!-- Application cache JavaScript -->
 </head>
 <body>
-    <div class="topbar">
-        <h1 class="title">LocalStorage and application cache demo</h1>
+    <div class="bar">
+        <h1 class="title">Local Storage and application cache demo</h1>
     </div>
     <div class="content">
         <div class="appcache-status">
@@ -40,36 +40,63 @@
                 <span>When the browser is offline, or the website goes down, the application cache status will change to error when attempting to update. Any cached pages and scripts will continue to function.</span>
                 <span>When the browser is online, and there are no updates found in the application cache, then all resources are loaded from the cache, saving network bandwidth and time.</span>
             </p>
+            <div class="hint-panel">
+                <p>Try working offline, or stopping the server your hosting this on. Refresh the page. Everything will still load and the local storage functionality will continue to work.</p>
+            </div>
         </div>
         <div class="localstorage">
-            <h1>LocalStorage</h1>
-            <div class="localstorage-counter">
-                <h2>Saving numbers</h2>
-                <button id="counter-button" value="Increase Number" onclick="">Increase Number</button>
-                <p id="counter">0</p>
-                <button id="counter-reset" value="counter reset" onclick="">Reset Counter</button>
-            </div>
+            <h1>Local Storage</h1>
+            <p>
+                <span>Local storage is built into most modern browsers and allows a default of 5mb per origin to be stored. Items in local storage are save indefinitely. The browser can be closed, the computer can be shut down, but the items stored will remain, unless they are explicitly removed or the browsers cache is cleared. </span>
+                <span>Items in local storage are saved as strings in key value pairs.</span>
+            </p>
+            <p>Accessing a localStorage item is done by:</p>
+            <p class="code">localStorage.getItem("key");</p>
+            <p>and storing a localStoage item is done by:</p>
+            <p class="code">localStorage.setItem("key","value");</p>
+            <p>Simple. </p>
+            <p>Items in local storage can also be explicitly removed by:</p>
+            <p class="code">localStorage.removeItem("key");</p>
             <div class="localstorage-text">
                 <h2>Saving text</h2>
+                <p>Using the above methods the input below can save text to local storage.</p>
                 <input type="text" id="text-input" />
-                <button id="text-save" value="save text" onclick="">Save Text</button>
-                <div class="text-scroll">
-                    <ul id="text-list">
+                <button id="text-save" value="save text" onclick="saveText()">Save Text</button>
+                <p id="saved-text"></p>
+            </div>
+            <div class="localstorage-counter">
+                <h2>Saving numbers</h2>
+                <p>As items in local storage are saved as strings, other data such as numbers need to be converted when read from local storage. However they do not need to be converted when storing to local storage.</p>
+                <p class="code">var number = parseInt(localStorage.getItem("number"));</p>
+                <p>The counter below demonstrates a number being save to local storage. As the number is increased, it is first loaded from local storage, then parsed as an integer to allow the addition, before being saved back to local storage again.</p>
+                <button id="counter-button" value="Increase Number" onclick="increaseCounter()">Increase Number</button>
+                <button id="counter-reset" value="counter reset" onclick="resetCounter()">Reset Counter</button>
+                <p id="counter"></p>
+            </div>
 
+            <div class="localstorage-messages">
+                <h2>Using JSON to save objects</h2>
+                <p>Perhaps you want to store more than one single item in a local storage key. Arrays and objects can be saved and read from local storage using JSON.</p>
+                <p>To read an object from local storage:</p>
+                <p class="code">var obj = JSON.parse(localStorage.getItem("object");</p>
+                <p>And to store an object to local storage:</p>
+                <p class="code">localStorage.setItem("object", JSON.stringify(obj));</p>
+                <p>This then allows more complex data to be saves as one key, allowing a collection of data. This is especially useful for an array of data which may need to be searched. The key then becomes the collection name.</p>
+                <p>Below messages can be saved to a single "messages" key in local storage.</p>
+                <p>The array of messages is then shown below.</p>
+                <input type="text" id="message-input" />
+                <button id="message-save" value="save message" onclick="saveMessage()">Save Message</button>
+                <button id="messsage-clear" onclick="clearMessages()">Clear Messages</button>
+                <br>
+                <div class="output wide">
+                    <ul id="messages-output">
                     </ul>
                 </div>
             </div>
-            <div class="localstorage-messages">
-                <h2>Using JSON to save objects</h2>
-                <label for="message">Message:</label>
-                <input type="text" id="message" />
-                <button id="message-save" value="save message" onclick="">Save Message</button>
-
-                <div class="output" id="json-output">
-
-                </div>
-            </div>
         </div>
+    </div>
+    <div class="bar">
+        <p class="footer-text">Andrew Stalker 2014</p>
     </div>
 </body>
         </html>
